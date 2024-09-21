@@ -1,0 +1,3 @@
+actions:
+  # 是否接收来自 BungeeCord 的欢迎消息
+  receiver-welcome: false

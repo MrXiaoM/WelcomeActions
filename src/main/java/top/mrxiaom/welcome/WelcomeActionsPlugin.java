@@ -10,7 +10,7 @@ public class WelcomeActionsPlugin extends BukkitPlugin {
 
     public WelcomeActionsPlugin() {
         super(options()
-                .bungee(false)
+                .bungee(true)
                 .database(true)
                 .reconnectDatabaseWhenReloadConfig(false)
                 .vaultEconomy(false)
