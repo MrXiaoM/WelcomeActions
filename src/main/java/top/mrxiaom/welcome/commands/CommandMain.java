@@ -121,6 +121,10 @@ public class CommandMain extends AbstractModule implements CommandExecutor, TabC
                 if (player == null || !player.isOnline()) {
                     return t(sender, "&e该玩家 &7(" + args[1] + ") &e不在线");
                 }
+                Long expireTime = plugin.getWelcomeDatabase().getWelcomeExpireTime(player.getName());
+                if (expireTime == null || expireTime > 114514) {
+                    return t(sender, "&e该玩家 &7(" + player.getName() + ") 已经注册过了");
+                }
                 plugin.getWelcomeDatabase().putWelcomeExpireTime(player.getName(), System.currentTimeMillis() + (rewardExpireTimeSeconds * 1000L));
                 TextComponent msg = withColor(PlaceholderAPI.setPlaceholders(player, message));
                 TextComponent click = withColor(buttonText);
@@ -128,6 +132,7 @@ public class CommandMain extends AbstractModule implements CommandExecutor, TabC
                 click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/welcomeactions hello " + player.getName()));
                 Bukkit.spigot().broadcast(msg, click);
                 ChatBroadcast.inst().broadcast(player, msg, click);
+                return t(sender, "&a已发送 &e" + player.getName() + " &a的欢迎新人消息");
             }
             if (args.length >= 1 && "reload".equalsIgnoreCase(args[0])) {
                 if (args.length == 2 && "database".equalsIgnoreCase(args[1])) {
