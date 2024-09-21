@@ -1,0 +1,10 @@
+name: WelcomeActions
+version: '${version}'
+main: top.mrxiaom.welcome.WelcomeActionsPlugin
+api-version: 1.13
+softdepend: [ PlaceholderAPI ]
+authors: [ MrXiaoM ]
+commands:
+  welcomeactions:
+    description: awa
+    aliases: [ wactions, wa ]
