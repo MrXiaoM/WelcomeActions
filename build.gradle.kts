@@ -27,6 +27,7 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.11.6")
 
     implementation("com.zaxxer:HikariCP:4.0.3") { isTransitive = false }
+    implementation("com.github.MrXiaoM:SQLHelper:2.0.2")
     implementation("org.jetbrains:annotations:21.0.0")
     implementation("com.github.MrXiaoM:PluginBase:1+")
 }
@@ -46,6 +47,7 @@ tasks {
             "org.jetbrains.annotations" to "annotations.jetbrains",
             "top.mrxiaom.pluginbase" to "base",
             "com.zaxxer.hikari" to "hikari",
+            "top.mrxiaom.sqlhelper" to "sql",
         ).forEach { (original, target) ->
             relocate(original, "$shadowGroup.$target")
         }

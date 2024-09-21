@@ -1,6 +1,7 @@
 package top.mrxiaom.welcome;
 
 import top.mrxiaom.pluginbase.BukkitPlugin;
+import top.mrxiaom.welcome.database.WelcomeDatabase;
 
 public class WelcomeActionsPlugin extends BukkitPlugin {
     public static WelcomeActionsPlugin getInstance() {
@@ -17,6 +18,12 @@ public class WelcomeActionsPlugin extends BukkitPlugin {
         );
     }
 
+    private WelcomeDatabase welcomeDatabase;
+
+    public WelcomeDatabase getWelcomeDatabase() {
+        return welcomeDatabase;
+    }
+
     public void reloadDatabase() {
         options.database().reloadConfig();
         options.database().reconnect();
@@ -24,9 +31,7 @@ public class WelcomeActionsPlugin extends BukkitPlugin {
 
     @Override
     protected void beforeEnable() {
-        options.registerDatabase(
-                // TODO: 数据库
-        );
+        options.registerDatabase(welcomeDatabase = new WelcomeDatabase(this));
     }
 
     @Override
