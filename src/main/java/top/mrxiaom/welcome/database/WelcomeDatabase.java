@@ -136,6 +136,6 @@ public class WelcomeDatabase implements IDatabase {
         } catch (Throwable t) {
             plugin.getLogger().warning(stackTraceToString(t));
         }
-        return null;
+        return 0L;
     }
 }

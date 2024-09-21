@@ -90,6 +90,10 @@ public class CommandMain extends AbstractModule implements CommandExecutor, TabC
                 player.chat(chat.replace("%newcomer%", target));
                 Long expireTime = plugin.getWelcomeDatabase().getWelcomeExpireTime(target);
                 if (expireTime != null) {
+                    if (expireTime <= 0L) {
+                        welcomeFlag.set(false);
+                        return true;
+                    }
                     if (System.currentTimeMillis() > expireTime) {
                         Util.runCommands(player, welcomeExpire);
                     } else {
@@ -105,7 +109,7 @@ public class CommandMain extends AbstractModule implements CommandExecutor, TabC
                         }
                     }
                 } else {
-                    Util.runCommands(player, welcomeReward);
+                    Util.runCommands(player, welcomeExpire);
                 }
                 welcomeFlag.set(false);
                 return true;
