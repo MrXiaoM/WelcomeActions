@@ -1,3 +1,42 @@
+# 命令配置 /wa register <玩家名>
+# 配置完后，需要添加到登录插件“已注册”执行命令处
+register:
+  # 限时欢迎奖励时间 (单位为秒)
+  # 超过这个时间再欢迎新人时没有奖励
+  # 修改这个选项【不会】让在这之前注册过的新人 的限时时间随着改变
+  reward-expire-time-seconds: 600
+  # 欢迎消息
+  message: '{#CD6EEA:#E85FBE:&l迎新姬} &f&l>> &d&l欢迎新玩家{#FFFF55:#DDD605:&l%player_name%}&d&l加入服务器! '
+  # 欢迎消息后面显示的按钮
+  button:
+    text: '&7[&e&l&n点击欢迎&7]'
+    hover: '&e点击发送消息: &f欢迎新人'
+
+# 玩家点击欢迎按钮配置
 actions:
+  # 点击欢迎按钮之后，玩家在聊天中发送的文案 (随机发送)
+  # 其中 %newcomer% 为新人的名字
+  chat:
+    - '欢迎新人'
+
   # 是否接收来自 BungeeCord 的欢迎消息
   receiver-welcome: false
+  # 是否在当前子服启用欢迎奖励
+  enable: false
+  # 是否允许欢迎自己
+  welcome-self: false
+  # 只有前几名可以获得欢迎奖励，设为 -1 不限制
+  times-limit: -1
+  # 欢迎奖励执行命令，其中 %newcomer% 为新人的名字，支持 PAPI (PAPI 变量以点击欢迎按钮的玩家为上下文)
+  # [console] 控制台命令
+  # [player] 玩家命令
+  # [message] 显示消息
+  reward-commands:
+    - '[console]money give %player_name% 100' # 给予玩家 100 金币
+    - '[message]&a你获得了欢迎奖励&e100金币' # 提示
+  # 超出时间限制之后点击欢迎执行的命令，同上
+  expire-commands: []
+  # 已经领取过奖励，再点击欢迎时执行的命令，同上
+  already-commands: []
+  # 超出奖励次数限制之后执行的命令，同上
+  limit-commands: []

@@ -4,10 +4,6 @@ import top.mrxiaom.pluginbase.BukkitPlugin;
 import top.mrxiaom.welcome.database.WelcomeDatabase;
 
 public class WelcomeActionsPlugin extends BukkitPlugin {
-    public static WelcomeActionsPlugin getInstance() {
-        return (WelcomeActionsPlugin) BukkitPlugin.getInstance();
-    }
-
     public WelcomeActionsPlugin() {
         super(options()
                 .bungee(true)
